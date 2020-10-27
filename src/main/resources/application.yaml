@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/alquiler-videojuegos
+    username: postgres
+    password: creo06
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop      
+    generate-ddl: false
+    show-sql: true
+    
+        
