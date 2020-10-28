@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,6 +63,16 @@ public class JuegoResource {
 		nombre = nombre.toLowerCase();
 		LOG.info("Este es el " + nombre);
 		return ResponseEntity.ok(this.juegoService.buscarPorNombre(nombre));
+	}
+	
+
+	@GetMapping("/{id}")
+	@ApiOperation(value = "Juegos", notes = "Consulta juegos por nombre")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Juegos listados correctamente"),
+			@ApiResponse(code = 400, message = "Solicitud Inválida") })
+
+	public ResponseEntity<Juego> buscarPorId(@PathVariable("id") long id) {
+		return ResponseEntity.ok(this.juegoService.findById(id));
 	}
 	
 	
